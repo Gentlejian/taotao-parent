@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 设置查询条件，使用该类
+ */
 public class TbItemExample {
     protected String orderByClause;
 
