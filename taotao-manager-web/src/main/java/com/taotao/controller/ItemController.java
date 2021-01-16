@@ -25,8 +25,6 @@ public class ItemController {
     @RequestMapping("/item/{itemId}")
     @ResponseBody
     public TbItem getItemById(@PathVariable Long itemId) {
-        System.out.println(itemId);
-        System.out.println(itemService);
         TbItem tbItem = itemService.getItemById(itemId);
         return tbItem;
     }

@@ -26,7 +26,6 @@ public class ItemServiceImpl implements ItemService {
      */
     @Override
     public TbItem getItemById(long itemId) {
-        System.out.println("======" + itemId);
         TbItem tbItem = itemMapper.selectByPrimaryKey(itemId);
         return tbItem;
     }
