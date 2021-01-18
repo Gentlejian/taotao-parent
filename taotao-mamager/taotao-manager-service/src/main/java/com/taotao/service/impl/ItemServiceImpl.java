@@ -1,10 +1,17 @@
 package com.taotao.service.impl;
 
+import com.alibaba.dubbo.container.page.PageHandler;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.taotao.common.pojo.EasyUIDataGridResult;
 import com.taotao.mapper.TbItemMapper;
 import com.taotao.pojo.TbItem;
+import com.taotao.pojo.TbItemExample;
 import com.taotao.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -28,5 +35,27 @@ public class ItemServiceImpl implements ItemService {
     public TbItem getItemById(long itemId) {
         TbItem tbItem = itemMapper.selectByPrimaryKey(itemId);
         return tbItem;
+    }
+
+    /**
+     * 查询商品全部信息
+     * @param page 总记录数
+     * @param rows 数据集
+     * @return
+     */
+    @Override
+    public EasyUIDataGridResult getItemList(int page, int rows) {
+        //设置分页信息
+        PageHelper.startPage(page, rows);
+        //执行查询
+        TbItemExample example = new TbItemExample();
+        List<TbItem> list = itemMapper.selectByExample(example);
+        //获取查询结果
+        PageInfo pageInfo = new PageInfo(list);
+        EasyUIDataGridResult result = new EasyUIDataGridResult();
+        result.setRows(list);
+        result.setTotal(pageInfo.getTotal());
+        //返回结果
+        return result;
     }
 }

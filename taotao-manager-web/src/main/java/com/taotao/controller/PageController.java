@@ -24,6 +24,12 @@ public class PageController {
     }
 
 
+    /**
+     * 传参数page 这个参数名称可以随便起
+     * 获取index.jsp 中的参数，在菜单栏点击传入改参数，调到该参数对应的页面
+     * @param page
+     * @return
+     */
     @RequestMapping("/{page}")
     public String showPage(@PathVariable String page) {
         return page;
