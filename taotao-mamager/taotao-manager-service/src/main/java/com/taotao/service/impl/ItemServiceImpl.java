@@ -29,7 +29,7 @@ public class ItemServiceImpl implements ItemService {
     /**
      * 根据商品id查询商品信息实现类
      * @param itemId
-     * @return
+     * @return tbItem
      */
     @Override
     public TbItem getItemById(long itemId) {
@@ -41,7 +41,7 @@ public class ItemServiceImpl implements ItemService {
      * 查询商品全部信息
      * @param page 总记录数
      * @param rows 数据集
-     * @return
+     * @return result
      */
     @Override
     public EasyUIDataGridResult getItemList(int page, int rows) {
